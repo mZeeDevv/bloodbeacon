@@ -3,7 +3,7 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { db } from "../services/firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-
+import Spinner from "../components/Spinner";
 const ProfilePage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -59,7 +59,7 @@ const ProfilePage = () => {
   };
 
   if (loading) {
-    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+    return <Spinner/>
   }
 
   return (

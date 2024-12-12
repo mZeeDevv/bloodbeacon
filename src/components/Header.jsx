@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom"; // For navigation
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { toast } from "react-toastify";
+import logo from '../assets/logo.png'
 
 const Header = () => {
   const [user, setUser] = useState(null);
@@ -28,35 +29,35 @@ const navi = useNavigate();
   };
 
   return (
-    <header className="flex justify-between items-center p-4 bg-red-600 text-white">
+    <header className="flex justify-between items-center p-4 text-red-600 shadow-lg">
       <div className="flex-1">
-        <img src="logo-placeholder.png" alt="Blood Donation Logo" className="w-32 h-auto" />
+        <img src={logo} alt="Blood Donation Logo" className="w-32 h-auto" />
       </div>
 
       {/* Navigation Links */}
       <nav className="flex-2">
         <ul className="flex justify-around space-x-6">
           <li>
-            <Link to="/looking-for-blood" className="text-white font-semibold text-lg hover:text-gray-300">
+            <Link to="/looking-for-blood" className="text-red-600 font-semibold text-lg hover:text-gray-300">
               Looking for Blood
             </Link>
           </li>
           <li>
-            <Link to="/giving-blood" className="text-white font-semibold text-lg hover:text-gray-300">
+            <Link to="/giving-blood" className="text-red-600 font-semibold text-lg hover:text-gray-300">
               Giving Blood
             </Link>
           </li>
           {user ? (
             <>
               <li>
-                <Link to="/profile" className="text-white font-semibold text-lg hover:text-gray-300">
+                <Link to="/profile" className="text-red-600 font-semibold text-lg hover:text-gray-300">
                   Profile
                 </Link>
               </li>
               <li>
                 <button
                   onClick={handleLogout}
-                  className="text-white font-semibold text-lg hover:text-gray-300"
+                  className="text-red-600 font-semibold text-lg hover:text-gray-300"
                 >
                   Logout
                 </button>
@@ -65,12 +66,12 @@ const navi = useNavigate();
           ) : (
             <>
               <li>
-                <Link to="/signup" className="text-white font-semibold text-lg hover:text-gray-300">
+                <Link to="/signup" className="text-red-600 font-semibold text-lg hover:text-gray-300">
                   Sign Up
                 </Link>
               </li>
               <li>
-                <Link to="/signin" className="text-white font-semibold text-lg hover:text-gray-300">
+                <Link to="/signin" className="text-red-600 font-semibold text-lg hover:text-gray-300">
                   Sign In
                 </Link>
               </li>
