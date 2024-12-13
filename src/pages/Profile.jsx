@@ -13,7 +13,7 @@ const ProfilePage = () => {
   const bloodGroups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
 
   useEffect(() => {
-     
+
         window.scrollTo(0, 0);
     
     const auth = getAuth();
@@ -34,12 +34,10 @@ const ProfilePage = () => {
           toast.error("Failed to fetch user data");
         }
       } else {
-        // toast.error("No authenticated user found");
+
       }
       setLoading(false); // Set loading to false after auth state is checked
     });
-
-    // Clean up the listener on component unmount
     return () => unsubscribe();
   }, []);
 
@@ -64,9 +62,8 @@ const ProfilePage = () => {
   if (loading) {
     return <Spinner/>
   }
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-red-50 min-h-screen">
+    <div className=" flex items-center justify-center bg-red-50 min-h-screen">
       <div className="max-w-md w-full bg-white p-8 shadow-lg rounded-md">
         <h1 className="text-2xl font-bold text-red-600 mb-6 text-center">Profile</h1>
 
