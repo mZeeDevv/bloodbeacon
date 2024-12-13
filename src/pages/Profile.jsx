@@ -13,6 +13,9 @@ const ProfilePage = () => {
   const bloodGroups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
 
   useEffect(() => {
+     
+        window.scrollTo(0, 0);
+    
     const auth = getAuth();
 
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -63,7 +66,7 @@ const ProfilePage = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-red-50">
+    <div className="min-h-screen flex items-center justify-center bg-red-50 min-h-screen">
       <div className="max-w-md w-full bg-white p-8 shadow-lg rounded-md">
         <h1 className="text-2xl font-bold text-red-600 mb-6 text-center">Profile</h1>
 

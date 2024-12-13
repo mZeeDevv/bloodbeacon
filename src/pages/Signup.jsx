@@ -1,23 +1,24 @@
 // Import necessary libraries
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { db } from "../services/firebase"; // Firebase configuration file
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [bloodGroup, setBloodGroup] = useState("A+");
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
-
+   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const auth = getAuth();
-
+  const navi = useNavigate();
   const handleSignup = async (e) => {
     e.preventDefault();
-    setError("");
-    setSuccess("");
+
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
@@ -30,9 +31,10 @@ const Signup = () => {
         bloodGroup,
       });
 
-      setSuccess("User registered successfully!");
+      toast.success("User registered successfully!");
+      navi("/profile");
     } catch (err) {
-      setError(err.message);
+      toast.error(err.message);
     }
   };
 
@@ -40,9 +42,6 @@ const Signup = () => {
     <div className="min-h-screen flex items-center justify-center bg-red-50">
       <div className="max-w-md w-full bg-white p-8 shadow-lg rounded-md">
         <h1 className="text-2xl font-bold text-red-600 mb-6 text-center">Blood Donation Signup</h1>
-
-        {error && <p className="text-red-500 mb-4 text-center">{error}</p>}
-        {success && <p className="text-green-500 mb-4 text-center">{success}</p>}
 
         <form onSubmit={handleSignup}>
           <div className="mb-4">

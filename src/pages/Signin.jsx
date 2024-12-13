@@ -8,21 +8,19 @@ import { db } from "../services/firebase";
 const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-
   const auth = getAuth();
   const navigate = useNavigate();
 
   const handleSignin = async (e) => {
     e.preventDefault();
-    setError("");
+    
     try {
       await signInWithEmailAndPassword(auth, email, password);
       toast.success("Login successful!");
       navigate("/"); // Redirect to the main page
     } catch (err) {
       toast.error(err.message);
-      setError(err.message);
+      
     }
   };
 
@@ -31,9 +29,6 @@ const Signin = () => {
      
       <div className="max-w-md w-full bg-white p-8 shadow-lg rounded-md">
         <h1 className="text-2xl font-bold text-red-600 mb-6 text-center">Blood Donation Sign In</h1>
-
-        {error && <p className="text-red-500 mb-4 text-center">{error}</p>}
-
         <form onSubmit={handleSignin}>
           <div className="mb-4">
             <label className="block text-gray-700 mb-2">Email</label>

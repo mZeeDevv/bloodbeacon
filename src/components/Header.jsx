@@ -29,7 +29,7 @@ const navi = useNavigate();
   };
 
   return (
-    <header className="flex justify-between items-center p-4 text-red-600 shadow-lg">
+    <header className="flex justify-between items-center p-4 text-red-600 shadow-l">
       <div className="flex-1">
         <img src={logo} alt="Blood Donation Logo" className="w-32 h-auto" />
       </div>
